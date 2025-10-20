@@ -102,11 +102,11 @@ await SecurePreferences.clear();
 
 <docgen-index>
 
-- [`set(...)`](#set)
-- [`get(...)`](#get)
-- [`remove(...)`](#remove)
-- [`keys()`](#keys)
-- [`clear()`](#clear)
+* [`set(...)`](#set)
+* [`get(...)`](#get)
+* [`remove(...)`](#remove)
+* [`keys()`](#keys)
+* [`clear()`](#clear)
 
 </docgen-index>
 
@@ -125,7 +125,8 @@ Persist a string value for the given key.
 | ------------- | -------------------------------------------- |
 | **`options`** | <code>{ key: string; value: string; }</code> |
 
----
+--------------------
+
 
 ### get(...)
 
@@ -142,7 +143,8 @@ Returns null if the key is not set.
 
 **Returns:** <code>Promise&lt;{ value: string | null; }&gt;</code>
 
----
+--------------------
+
 
 ### remove(...)
 
@@ -156,7 +158,8 @@ Remove the value for the given key if it exists.
 | ------------- | ----------------------------- |
 | **`options`** | <code>{ key: string; }</code> |
 
----
+--------------------
+
 
 ### keys()
 
@@ -168,7 +171,8 @@ Get all stored keys.
 
 **Returns:** <code>Promise&lt;{ keys: string[]; }&gt;</code>
 
----
+--------------------
+
 
 ### clear()
 
@@ -178,6 +182,6 @@ clear() => Promise<void>
 
 Remove all stored entries for this plugin.
 
----
+--------------------
 
 </docgen-api>
