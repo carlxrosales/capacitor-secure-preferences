@@ -2,23 +2,104 @@
 <html lang="en" dir="ltr" class="hydrated">
   <head>
     <meta charset="UTF-8" />
-    <title>Example Capacitor App</title>
+    <title>Secure Preferences Example</title>
     <meta
       name="viewport"
       content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <meta name="format-detection" content="telephone=no" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .input-group {
+        margin: 15px 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      .button-group {
+        margin: 20px 0;
+      }
+      #result {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 20px 0;
+        min-height: 20px;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+      .warning {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <h1>Capacitor Test Plugin Project</h1>
+      <h1>🔐 Secure Preferences Plugin</h1>
       <p>
-        This project can be used to test out the functionality of your plugin. Nothing in the
-        <em>example-app/</em> folder will be published to npm when using this template, so you can create away!
+        Test the SecurePreferences plugin functionality. This demonstrates secure storage using Keychain (iOS),
+        EncryptedSharedPreferences (Android), and localStorage (Web).
       </p>
-      <label for="echoInput">Echo Text:</label>
-      <input type="text" id="echoInput" name="echoInput" value="Hello World!" />
-      <button onclick="testEcho()">Click Me!</button>
+
+      <div class="warning">
+        ⚠️ <strong>Web Platform:</strong> Values are stored unencrypted in localStorage for development only. Do not use
+        in production.
+      </div>
+
+      <div class="input-group">
+        <label for="keyInput">Key:</label>
+        <input type="text" id="keyInput" name="keyInput" value="testKey" placeholder="Enter key name" />
+      </div>
+
+      <div class="input-group">
+        <label for="valueInput">Value:</label>
+        <input type="text" id="valueInput" name="valueInput" value="testValue" placeholder="Enter value" />
+      </div>
+
+      <div class="button-group">
+        <button onclick="testSet()">Set</button>
+        <button onclick="testGet()">Get</button>
+        <button onclick="testRemove()">Remove</button>
+        <button onclick="testKeys()">List Keys</button>
+        <button onclick="testClear()">Clear All</button>
+      </div>
+
+      <div id="result">Ready to test... Click a button above to get started!</div>
     </main>
 
     <script src="./js/example.js" type="module"></script>
