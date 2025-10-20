@@ -35,7 +35,7 @@ import Foundation
     }
 
     // Retrieve value for key, or nil
-    @objc public func get(key: String) throws -> String? {
+    @objc public func get(key: String) throws -> String {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -47,11 +47,18 @@ import Foundation
 
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
-        if status == errSecItemNotFound { return nil }
+        if status == errSecItemNotFound { 
+            throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecItemNotFound), userInfo: [NSLocalizedDescriptionKey: "Key not found"])
+        }
         if status != errSecSuccess { throw NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil) }
 
-        guard let data = item as? Data else { return nil }
-        return String(data: data, encoding: .utf8)
+        guard let data = item as? Data else { 
+            throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecDataNotAvailable), userInfo: [NSLocalizedDescriptionKey: "Invalid data format"])
+        }
+        guard let string = String(data: data, encoding: .utf8) else {
+            throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecDataNotAvailable), userInfo: [NSLocalizedDescriptionKey: "Invalid string encoding"])
+        }
+        return string
     }
 
     // Remove value for key
