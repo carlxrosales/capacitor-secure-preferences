@@ -21,13 +21,22 @@
     "type": "git",
     "url": "git+https://github.com/carlxrosales/capacitor-secure-preferences.git"
   },
+  "homepage": "https://github.com/carlxrosales/capacitor-secure-preferences#readme",
   "bugs": {
     "url": "https://github.com/carlxrosales/capacitor-secure-preferences/issues"
   },
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "secure",
+    "preferences",
+    "storage",
+    "keychain",
+    "encrypted",
+    "ios",
+    "android",
+    "web"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
